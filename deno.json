@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "start": "deno bench --allow-read --watch"
+  },
+  "imports": {
+    "/": "./",
+    "./": "./",
+    "@std/assert": "jsr:@std/assert@1"
+  }
+}

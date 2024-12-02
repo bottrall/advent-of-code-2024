@@ -35,6 +35,7 @@ console.log(solve(input));
 
 Deno.bench("day_1.1", () => {
   const res = solve(input);
+
   if (res !== answer) {
     throw new Error(`Expected ${answer}, got ${res}`);
   }

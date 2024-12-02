@@ -9,39 +9,44 @@ function solve(input: string) {
   let safe = 0;
 
   for (const report of reports) {
-    const levels = report.split(" ").map(Number);
+    if (isSafe(report)) {
+      safe++;
+    }
+  }
 
-    let isIncreasing = false;
-    let isDecreasing = false;
+  return safe;
+}
 
-    let graduallyIncreasing = true;
+function isSafe(report: string) {
+  const levels = report.split(" ").map(Number);
 
-    for (let i = 0; i < levels.length - 1; i++) {
-      const level = levels[i];
-      const nextLevel = levels[i + 1];
+  let isIncreasing = false;
+  let isDecreasing = false;
 
-      if (level < nextLevel) {
-        isIncreasing = true;
-      }
+  let safe = true;
 
-      if (level > nextLevel) {
-        isDecreasing = true;
-      }
+  for (let i = 0; i < levels.length - 1; i++) {
+    const level = levels[i];
+    const nextLevel = levels[i + 1];
 
-      if (isIncreasing && isDecreasing) {
-        break;
-      }
-
-      const diff = Math.abs(level - nextLevel);
-
-      if (diff < 1 || diff > 3) {
-        graduallyIncreasing = false;
-        break;
-      }
+    if (!isIncreasing && level < nextLevel) {
+      isIncreasing = true;
     }
 
-    if (graduallyIncreasing && !(isIncreasing && isDecreasing)) {
-      safe++;
+    if (!isDecreasing && level > nextLevel) {
+      isDecreasing = true;
+    }
+
+    if (isIncreasing && isDecreasing) {
+      safe = false;
+      break;
+    }
+
+    const diff = Math.abs(level - nextLevel);
+
+    if (diff < 1 || diff > 3) {
+      safe = false;
+      break;
     }
   }
 

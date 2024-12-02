@@ -53,8 +53,6 @@ function isSafe(report: string) {
   return safe;
 }
 
-console.log(solve(input));
-
 Deno.bench("day_2.1", () => {
   const res = solve(input);
 
@@ -62,3 +60,5 @@ Deno.bench("day_2.1", () => {
     throw new Error(`Expected ${answer}, got ${res}`);
   }
 });
+
+console.log(solve(input));

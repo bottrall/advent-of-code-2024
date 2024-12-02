@@ -31,8 +31,6 @@ function solve(input: string) {
   return distance;
 }
 
-console.log(solve(input));
-
 Deno.bench("day_1.1", () => {
   const res = solve(input);
 
@@ -40,3 +38,5 @@ Deno.bench("day_1.1", () => {
     throw new Error(`Expected ${answer}, got ${res}`);
   }
 });
+
+console.log(solve(input));

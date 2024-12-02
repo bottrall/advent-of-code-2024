@@ -36,8 +36,6 @@ function location(id: string) {
   return { id: +id, left: 0, right: 0 };
 }
 
-console.log(solve(input));
-
 Deno.bench("day_1.2", () => {
   const res = solve(input);
 
@@ -45,3 +43,5 @@ Deno.bench("day_1.2", () => {
     throw new Error(`Expected ${answer}, got ${res}`);
   }
 });
+
+console.log(solve(input));

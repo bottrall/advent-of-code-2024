@@ -1,8 +1,9 @@
 import { getInput } from "/utils/getInput.ts";
 
 const input = getInput(1, 1);
+const answer = 2113135;
 
-function solve(input: string, log: boolean = false) {
+function solve(input: string) {
   const lines = input.split("\n");
 
   const left: number[] = [];
@@ -27,18 +28,14 @@ function solve(input: string, log: boolean = false) {
     distance += Math.abs(l - r);
   }
 
-  if (log) {
-    console.log(distance);
-  }
-
   return distance;
 }
 
-let isFirst = true;
+console.log(solve(input));
 
 Deno.bench("day_1.1", () => {
-  solve(input, isFirst);
-  isFirst = false;
+  const res = solve(input);
+  if (res !== answer) {
+    throw new Error(`Expected ${answer}, got ${res}`);
+  }
 });
-
-solve(input, true);

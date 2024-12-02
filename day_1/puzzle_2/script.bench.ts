@@ -1,12 +1,14 @@
 import { getInput } from "/utils/getInput.ts";
 
 const input = getInput(1, 2);
+const answer = 19097157;
 
-function solve(input: string, log: boolean = false) {
+function solve(input: string) {
   const locations = new Map<
     string,
     { id: number; left: number; right: number }
   >();
+
   const lines = input.split("\n");
 
   for (const line of lines) {
@@ -27,10 +29,6 @@ function solve(input: string, log: boolean = false) {
     similarity += location.id * location.left * location.right;
   }
 
-  if (log) {
-    console.log(similarity);
-  }
-
   return similarity;
 }
 
@@ -38,9 +36,12 @@ function location(id: string) {
   return { id: +id, left: 0, right: 0 };
 }
 
-let isFirst = true;
+console.log(solve(input));
 
 Deno.bench("day_1.2", () => {
-  solve(input, isFirst);
-  isFirst = false;
+  const res = solve(input);
+
+  if (res !== answer) {
+    throw new Error(`Expected ${answer}, got ${res}`);
+  }
 });

@@ -8,7 +8,7 @@ function solve(input: string) {
   let match: RegExpMatchArray | null = null;
   let result = 0;
 
-  while ((match = re.exec(input)) != null) {
+  while ((match = re.exec(input)) !== null) {
     const [_, a, b] = match;
     result += +a * +b;
   }

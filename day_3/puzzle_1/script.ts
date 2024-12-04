@@ -1,4 +1,4 @@
-import { getInput } from "/utils/getInput.ts";
+import { getInput } from "../../utils/getInput.ts";
 
 const input = getInput(3, 1);
 

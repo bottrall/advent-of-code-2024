@@ -1,7 +1,6 @@
-import { getInput } from "/utils/getInput.ts";
+import { getInput } from "../../utils/getInput.ts";
 
 const input = getInput(1, 1);
-const answer = 2113135;
 
 function solve(input: string) {
   const lines = input.split("\n");
@@ -31,12 +30,4 @@ function solve(input: string) {
   return distance;
 }
 
-Deno.bench("day_1.1", () => {
-  const res = solve(input);
-
-  if (res !== answer) {
-    throw new Error(`Expected ${answer}, got ${res}`);
-  }
-});
-
-console.log(solve(input));
+console.log(solve(input)); //2113135

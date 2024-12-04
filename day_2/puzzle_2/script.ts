@@ -1,7 +1,6 @@
-import { getInput } from "/utils/getInput.ts";
+import { getInput } from "../../utils/getInput.ts";
 
 const input = getInput(2, 2);
-const answer = 514;
 
 function solve(input: string) {
   const reports = input.split("\n");
@@ -65,12 +64,4 @@ function isSafe(report: string, remove: number = -1) {
   return isSafe(report, remove + 1);
 }
 
-Deno.bench("day_2.2", () => {
-  const res = solve(input);
-
-  if (res !== answer) {
-    throw new Error(`Expected ${answer}, got ${res}`);
-  }
-});
-
-console.log(solve(input));
+console.log(solve(input)); //514

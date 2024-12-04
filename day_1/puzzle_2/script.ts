@@ -1,7 +1,6 @@
-import { getInput } from "/utils/getInput.ts";
+import { getInput } from "../../utils/getInput.ts";
 
 const input = getInput(1, 2);
-const answer = 19097157;
 
 function solve(input: string) {
   const locations = new Map<
@@ -36,12 +35,4 @@ function location(id: string) {
   return { id: +id, left: 0, right: 0 };
 }
 
-Deno.bench("day_1.2", () => {
-  const res = solve(input);
-
-  if (res !== answer) {
-    throw new Error(`Expected ${answer}, got ${res}`);
-  }
-});
-
-console.log(solve(input));
+console.log(solve(input)); // 19097157

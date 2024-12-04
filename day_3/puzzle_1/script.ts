@@ -2,15 +2,14 @@ import { getInput } from "../../utils/getInput.ts";
 
 const input = getInput(3, 1);
 
-const regex = /mul\((\d+),(\d+)\)/g;
+const re = /mul\((\d+),(\d+)\)/g;
 
 function solve(input: string) {
+  let match: RegExpMatchArray | null = null;
   let result = 0;
 
-  const matches = input.match(regex) ?? [];
-
-  for (const match of matches) {
-    const [a, b] = match.slice(4, -1).split(",");
+  while ((match = re.exec(input)) != null) {
+    const [_, a, b] = match;
     result += +a * +b;
   }
 
